@@ -1,2 +1,1 @@
-# LifeVectorNode
-Life Vector Server
+# Skeleton project for Swagger
