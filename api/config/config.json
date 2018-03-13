@@ -1,8 +1,8 @@
 {
   "development": {
-   "username": "samars",
-    "password": null,
-    "database": "lifevector-development",
+   "username": "root",
+    "password": "Good4now!",
+    "database": "lifevector_development",
     "host": "127.0.0.1",
     "port": "5432",
     "operatorsAliases": false,

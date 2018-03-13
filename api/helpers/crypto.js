@@ -11,20 +11,18 @@ exports.hashPassword = function(password, salt) {
     };
 };
 
-exports.checkSession = function (req, res, callback) {
-    console.log(req.session);
+exports.checkSession = function (req, callback) {
     if (req.session && req.session.user) {
         User
             .findOne({ where: {username: req.session.user}})
             .then(user => {
                 if (user) {
-                    req.session.user = user;  //refresh the session value
-                    res.locals.user = user;
+                    req.session.user = user.dataValues.username;
                 }
-                // finishing processing the middleware and run the route
-                return callback(req, res, true);
+                // finishing processing the middleware and run the routes
+                callback(true);
             });
     } else {
-        return callback(null, null, false);
+        callback(false);
     }
 }
