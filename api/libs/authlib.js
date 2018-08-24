@@ -13,7 +13,7 @@ function login(userJSON, callback){
             if (userSearch) {
                 var salt = userSearch.dataValues.salt;
                 var hashing = cryptoHelper.hashPassword(userJSON.password, salt);
-                if (hashing.hash.toString('hex') == userSearch.dataValues.hashed_pwd){
+                if (hashing.hash.toString('base64') == userSearch.dataValues.hashed_pwd){
                     result = {
                         username: userJSON.username,
                         result: userJSON.username + " logged in successfully."
@@ -27,7 +27,7 @@ function login(userJSON, callback){
 }
 
 function register(userJSON, callback){
-    var salt = crypto.randomBytes(128).toString('base64');
+    var salt = crypto.randomBytes(128).toString();
     var hashing = cryptoHelper.hashPassword(userJSON.password, salt);
     user
         .findOne({ where: {username: userJSON.username}})
