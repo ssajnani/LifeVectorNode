@@ -86,6 +86,23 @@ paths:
             description: Error
             schema:
               type: object
+  /logout:
+          # binds a127 app logic to a route
+        x-swagger-router-controller: userController
+        post:
+          description: Returns 'Hello' to the caller
+          # used as the method name of the controller
+          operationId: logout
+          responses:
+            "200":
+              description: Success
+              schema:
+                type: object
+            # responses may fall through to errors
+            default:
+              description: Error
+              schema:
+                type: object
   /deleteUser:
         # binds a127 app logic to a route
       x-swagger-router-controller: userController
